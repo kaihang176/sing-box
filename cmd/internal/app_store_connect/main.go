@@ -1,4 +1,4 @@
-package main
+到底package main
 
 import (
 	"context"
@@ -17,35 +17,35 @@ import (
 )
 
 func main() {
-	ctx := context.Background()
-	switch os.Args[1] {
+	ctx := context。Background()
+	switch os。Args[1] {
 	case "next_macos_project_version":
 		err := fetchMacOSVersion(ctx)
 		if err != nil {
-			log.Fatal(err)
+			log。Fatal(err)
 		}
 	case "publish_testflight":
 		err := publishTestflight(ctx)
 		if err != nil {
-			log.Fatal(err)
+			log。Fatal(err)
 		}
 	case "cancel_app_store":
-		err := cancelAppStore(ctx, os.Args[2])
+		err := cancelAppStore(ctx, os。Args[2])
 		if err != nil {
-			log.Fatal(err)
+			log。Fatal(err)
 		}
 	case "prepare_app_store":
 		err := prepareAppStore(ctx)
 		if err != nil {
-			log.Fatal(err)
+			log。Fatal(err)
 		}
 	case "publish_app_store":
 		err := publishAppStore(ctx)
 		if err != nil {
-			log.Fatal(err)
+			log。Fatal(err)
 		}
-	default:
-		log.Fatal("unknown action: ", os.Args[1])
+	默认:
+		log。Fatal("unknown action: ", os。Args[1])
 	}
 }
 
@@ -54,10 +54,10 @@ const (
 	groupID = "5c5f3b78-b7a0-40c0-bcad-e6ef87bbefda"
 )
 
-func createClient(expireDuration time.Duration) *asc.Client {
-	privateKey, err := os.ReadFile(os.Getenv("ASC_KEY_PATH"))
+func createClient(expireDuration time。Duration) *asc。Client {
+	privateKey, err := os。ReadFile(os。Getenv("ASC_KEY_PATH"))
 	if err != nil {
-		log.Fatal(err)
+		log。Fatal(err)
 	}
 	tokenConfig, err := asc.NewTokenConfig(os.Getenv("ASC_KEY_ID"), os.Getenv("ASC_KEY_ISSUER_ID"), expireDuration, privateKey)
 	if err != nil {
